@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//configs/.default.fideconf=UTF-8
+encoding//configs/.fullLanguage.fideconf=UTF-8
+encoding//configs/.interactiveCalculator.fideconf=UTF-8
+encoding//configs/.minimalREPL.fideconf=UTF-8

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		    <struct>
+		        <and abstract="true" mandatory="true" name="caval">
+		            <description>
+		caval is a Configurable And Value oriented LISP, targeting the JVM.
+	</description>
+	            <or mandatory="true" name="Input">
+	                <description>
+	Where to get the caval code from
+</description>
+                <feature mandatory="true" name="File">
+                    <description>
+Read from a file
+</description>
+                </feature>
+                <feature mandatory="true" name="REPL">
+                    <description>
+Start a Read Evaluate Print Loop
+</description>
+                </feature>
+            </or>
+            <and mandatory="true" name="Reader">
+                <description>
+Reads the code and creates datastructures
+</description>
+                <and abstract="true" mandatory="true" name="Collections">
+                    <description>
+Collection datastructures
+</description>
+                    <feature mandatory="true" name="Lists">
+                        <description>
+Linked Lists
+</description>
+                    </feature>
+                    <feature name="Vectors">
+                        <description>
+Like ArrayList
+</description>
+                    </feature>
+                    <feature name="Maps">
+                        <description>
+Associative datastructure like HashMap
+</description>
+                    </feature>
+                </and>
+                <feature mandatory="true" name="Symbols">
+                    <description>
+Symbols refer to other things
+</description>
+                </feature>
+                <feature name="Keywords">
+                    <description>
+Keywords refer to themselves (useful as keys in a map)
+</description>
+                </feature>
+                <feature name="Numbers">
+                    <description>
+Integers and Doubles
+</description>
+                </feature>
+                <feature name="Strings">
+                    <description>
+Well Strings are Strings
+</description>
+                </feature>
+                <feature abstract="true" name="Comments"/>
+                <feature name="SpecialValues">
+                    <description>
+nil, true, false
+</description>
+                </feature>
+            </and>
+            <and mandatory="true" name="Evaluator">
+                <description>
+Evaluates the datastructures from the reader
+</description>
+                <and name="StandardLibrary">
+                    <description>
+Vital functions to do stuff
+</description>
+                    <feature name="Define">
+                        <description>
+Bind a value to a symbol
+</description>
+                    </feature>
+                    <feature name="If">
+                        <description>
+if condition then else
+</description>
+                    </feature>
+                    <feature name="Function">
+                        <description>
+Create a function
+</description>
+                    </feature>
+                    <feature name="Arithmetics">
+                        <description>
++, -, *, /
+</description>
+                    </feature>
+                    <feature name="Conjoin">
+                        <description>
+Add an element to a collection
+</description>
+                    </feature>
+                    <feature name="Let">
+                        <description>
+Create local bindings
+</description>
+                    </feature>
+                </and>
+                <feature name="Macros">
+                    <description>
+Like a function but gets code (the datastructure)
+as parameters and returns code to be evaluated
+</description>
+                </feature>
+                <feature abstract="true" name="NameSpaces">
+                    <description>
+Introduce scopes so not everything is global
+</description>
+                </feature>
+                <feature name="Quoting">
+                    <description>
+Don't evaluate the quoted expression,
+treat it as a datastructure
+</description>
+                </feature>
+            </and>
+        </and>
+    </struct>
+    <constraints>
+        <rule>
+            <imp>
+                <var>Arithmetics</var>
+                <var>Numbers</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>NameSpaces</var>
+                <var>Define</var>
+            </imp>
+        </rule>
+    </constraints>
+    <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+    <comments/>
+    <featureOrder userDefined="false"/>
+</featureModel>
