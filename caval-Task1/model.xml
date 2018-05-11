@@ -64,7 +64,7 @@ Integers and Doubles
 Well Strings are Strings
 </description>
                 </feature>
-                <feature abstract="true" name="Comments"/>
+                <feature name="Comments"/>
                 <feature name="SpecialValues">
                     <description>
 nil, true, false
@@ -110,7 +110,7 @@ Create local bindings
 </description>
                     </feature>
                 </and>
-                <feature name="Macros">
+                <feature abstract="true" name="Macros">
                     <description>
 Like a function but gets code (the datastructure)
 as parameters and returns code to be evaluated
