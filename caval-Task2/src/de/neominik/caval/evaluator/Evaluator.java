@@ -27,6 +27,7 @@ public class Evaluator {
         eval.env.put(Symbol.create("fn"), new Fun());
         eval.env.put(Symbol.create("if"), new If());
         eval.env.put(Symbol.create("quote"), new Quote());
+        eval.env.put(Symbol.create("eval"), new Eval());
         eval.specialForms.addAll(eval.env.keySet());
 
         eval.env.put(Symbol.create("+"), new Arithmetic.Plus());
