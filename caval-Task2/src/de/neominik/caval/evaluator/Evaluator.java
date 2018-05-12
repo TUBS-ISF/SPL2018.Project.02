@@ -71,7 +71,8 @@ public class Evaluator {
                 }
                 fn = (IFn) resolve(sym);
             } else {
-                fn = (IFn) evaluate(l.first());
+                Object function = evaluate(l.first());
+                fn = function instanceof Symbol ? (IFn) resolve((Symbol) function) : (IFn) function;
                 args = l.rest().stream().map(this::evaluate).collect(Collectors.toList());
             }
             result = fn != null ? fn.applyTo(args) : null;
