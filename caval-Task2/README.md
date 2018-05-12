@@ -4,7 +4,7 @@ Caval
 Caval is a Configurable And Value oriented LISP, targeting the JVM.
 
 Language Reference
--------------
+------------------
 ### Basic values
 ```clojure
 ;; Numbers
@@ -84,3 +84,11 @@ Language Reference
 - Functions (`fn`)
 - Conditional (`if`)
 - Quoting (`quote`, `eval`)
+
+Build & Run
+-----------
+- Do a `mvn install` do get all dependencies and build
+- Execute the main class `de.neominik.caval.Main`
+  - without arguments, usage is printed
+  - option `-r` starts a REPL (Read Evaluate Print Loop)
+  - option `-f file` interprets a file
