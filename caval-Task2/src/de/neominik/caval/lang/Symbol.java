@@ -33,6 +33,6 @@ public class Symbol {
 
     @Override
     public String toString() {
-        return "Symbol{'" + name + "'}";
+        return name;
     }
 }
