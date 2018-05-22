@@ -1,3 +1,4 @@
+// #condition Quoting
 package de.neominik.caval.lang;
 
 public class Quote extends AFn {

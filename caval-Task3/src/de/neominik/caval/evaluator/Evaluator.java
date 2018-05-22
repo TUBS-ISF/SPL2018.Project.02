@@ -22,12 +22,24 @@ public class Evaluator {
 
     public static Evaluator constructInitialEvaluator() {
         Evaluator eval = new Evaluator(null);
+        // #ifdef Define
         eval.env.put(Symbol.create("def"), new Define(eval.env));
+        // #endif
+        // #ifdef Let
         eval.env.put(Symbol.create("let"), new Binding());
+        // #endif
+        // #ifdef Function
         eval.env.put(Symbol.create("fn"), new Fun());
+        // #endif
+        // #ifdef If
         eval.env.put(Symbol.create("if"), new If());
+        // #endif
+        // #ifdef Quoting
         eval.env.put(Symbol.create("quote"), new Quote());
+        // #endif
+        // #ifdef Eval
         eval.env.put(Symbol.create("eval"), new Eval());
+        // #endif
         eval.specialForms.addAll(eval.env.keySet());
 
         eval.env.put(Symbol.create("+"), new Arithmetic.Plus());

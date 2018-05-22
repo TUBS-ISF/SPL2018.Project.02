@@ -27,11 +27,17 @@ public class LispReader {
         macros['^'] = null;
         macros['`'] = null;
         macros['~'] = null;
+        // #ifdef Lists
         macros['('] = new CollectionReader.ListReader();
+        // #endif
         macros[')'] = new UnmatchedDelimiterReader();
+        // #ifdef Vectors
         macros['['] = new CollectionReader.VectorReader();
+        // #endif
         macros[']'] = new UnmatchedDelimiterReader();
+        // #ifdef Maps
         macros['{'] = new CollectionReader.MapReader();
+        // #endif
         macros['}'] = new UnmatchedDelimiterReader();
         macros['\\'] = null;
         macros['%'] = null;

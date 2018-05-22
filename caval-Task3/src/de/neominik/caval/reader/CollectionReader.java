@@ -26,6 +26,7 @@ class CollectionReader {
         }
     }
 
+    // #ifdef Lists
     public static class ListReader extends AFn {
 
         @Override
@@ -35,7 +36,9 @@ class CollectionReader {
         }
 
     }
+    // #endif
 
+    // #ifdef Vectors
     public static class VectorReader extends AFn {
 
         @Override
@@ -44,7 +47,9 @@ class CollectionReader {
             return PersistentVector.of(readDelimited(r, ']').toArray());
         }
     }
+    // #endif
 
+    // #ifdef Maps
     public static class MapReader extends AFn {
 
         @Override
@@ -55,4 +60,5 @@ class CollectionReader {
             return PersistentMap.of(a.toArray());
         }
     }
+    // #endif
 }

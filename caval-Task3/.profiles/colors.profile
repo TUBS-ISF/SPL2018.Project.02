@@ -1,0 +1,11 @@
+true
+Function=Yellow
+Maps=Yellow
+Define=Yellow
+Lists=Yellow
+Vectors=Yellow
+Let=Yellow
+Quoting=Yellow
+Collections=NO_COLOR
+Eval=Yellow
+If=Yellow

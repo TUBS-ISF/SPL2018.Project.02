@@ -1,3 +1,4 @@
+// #condition Define
 package de.neominik.caval.lang;
 
 import de.neominik.caval.evaluator.Evaluator;
