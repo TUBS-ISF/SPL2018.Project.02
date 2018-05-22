@@ -84,9 +84,9 @@ Vital functions to do stuff
 Bind a value to a symbol
 </description>
                     </feature>
-                    <feature name="If">
+                    <feature name="Let">
                         <description>
-if condition then else
+Create local bindings
 </description>
                     </feature>
                     <feature name="Function">
@@ -94,21 +94,42 @@ if condition then else
 Create a function
 </description>
                     </feature>
-                    <feature name="Arithmetics">
+                    <feature name="If">
+                        <description>
+if condition then else
+</description>
+                    </feature>
+                    <or name="Arithmetics">
                         <description>
 +, -, *, /
 </description>
-                    </feature>
-                    <feature name="Conjoin">
-                        <description>
+                        <feature mandatory="true" name="Plus"/>
+                        <feature mandatory="true" name="Minus"/>
+                        <feature mandatory="true" name="Times"/>
+                        <feature mandatory="true" name="Divide"/>
+                    </or>
+                    <or name="CollectionOperations">
+                        <feature mandatory="true" name="Conjoin">
+                            <description>
 Add an element to a collection
 </description>
-                    </feature>
-                    <feature name="Let">
-                        <description>
-Create local bindings
-</description>
-                    </feature>
+                        </feature>
+                        <feature mandatory="true" name="First"/>
+                        <feature mandatory="true" name="Rest"/>
+                        <feature mandatory="true" name="Count"/>
+                    </or>
+                    <or name="LogicOperations">
+                        <feature mandatory="true" name="Equals"/>
+                        <feature mandatory="true" name="Not"/>
+                        <feature mandatory="true" name="GreaterThan"/>
+                        <feature mandatory="true" name="GreaterOrEqual"/>
+                        <feature mandatory="true" name="LessThan"/>
+                        <feature mandatory="true" name="LessOrEqual"/>
+                    </or>
+                    <and abstract="true" name="IO">
+                        <feature name="Printing"/>
+                        <feature name="Exit"/>
+                    </and>
                 </and>
                 <feature abstract="true" name="Macros">
                     <description>
@@ -127,6 +148,7 @@ Don't evaluate the quoted expression,
 treat it as a datastructure
 </description>
                 </feature>
+                <feature name="Eval"/>
             </and>
         </and>
     </struct>
@@ -139,8 +161,20 @@ treat it as a datastructure
         </rule>
         <rule>
             <imp>
-                <var>NameSpaces</var>
-                <var>Define</var>
+                <var>If</var>
+                <var>SpecialValues</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>LogicOperations</var>
+                <var>SpecialValues</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>Eval</var>
+                <var>Quoting</var>
             </imp>
         </rule>
     </constraints>
