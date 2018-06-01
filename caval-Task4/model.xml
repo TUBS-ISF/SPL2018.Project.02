@@ -25,7 +25,7 @@ Start a Read Evaluate Print Loop
                 <description>
 Reads the code and creates datastructures
 </description>
-                <and abstract="true" mandatory="true" name="Collections">
+                <and mandatory="true" name="Collections">
                     <description>
 Collection datastructures
 </description>
@@ -45,17 +45,17 @@ Associative datastructure like HashMap
 </description>
                     </feature>
                 </and>
-                <feature mandatory="true" name="Symbols">
+                <feature abstract="true" mandatory="true" name="Symbols">
                     <description>
 Symbols refer to other things
 </description>
                 </feature>
-                <feature name="Keywords">
+                <feature abstract="true" name="Keywords">
                     <description>
 Keywords refer to themselves (useful as keys in a map)
 </description>
                 </feature>
-                <feature name="Numbers">
+                <feature abstract="true" name="Numbers">
                     <description>
 Integers and Doubles
 </description>
@@ -66,11 +66,12 @@ Well Strings are Strings
 </description>
                 </feature>
                 <feature name="Comments"/>
-                <feature name="SpecialValues">
+                <feature abstract="true" name="SpecialValues">
                     <description>
 nil, true, false
 </description>
                 </feature>
+                <feature name="QuoteMacro"/>
             </and>
             <and abstract="true" mandatory="true" name="Evaluator">
                 <description>

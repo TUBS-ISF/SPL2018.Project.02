@@ -21,6 +21,7 @@
 package loader;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -103,8 +104,8 @@ public class PluginLoader {
 			for (String clWithInterface : classes.get(key)) {
 				try {
 					Class<?> loadClass = systemClassLoader.loadClass(clWithInterface);
-					classInstanceList.add(loadClass.newInstance());
-				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+					classInstanceList.add(loadClass.getConstructor().newInstance());
+				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 					e.printStackTrace();
 				}
 			}

@@ -170,4 +170,9 @@ public class PersistentMap extends AFn implements Map {
     public int hashCode() {
         return items.hashCode();
     }
+    
+    @Override
+    public String toString() {
+    	return items.toString();
+    }
 }

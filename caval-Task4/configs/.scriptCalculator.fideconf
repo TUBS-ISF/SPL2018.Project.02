@@ -15,6 +15,7 @@
 22Strings
 22Comments
 22SpecialValues
+22QuoteMacro
 11Evaluator
 11StandardLibrary
 12Define

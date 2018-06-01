@@ -20,7 +20,7 @@ public class Main {
 
     @SuppressWarnings("CanBeFinal")
     @Option(name = "-r", aliases = "--repl", forbids = "-f", usage = "start a repl")
-    private boolean replInput = false;
+    private boolean replInput = true;
 
     @SuppressWarnings("CanBeFinal")
     @Option(name = "-h", aliases = "--help", help = true)

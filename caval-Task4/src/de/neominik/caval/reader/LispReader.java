@@ -3,6 +3,7 @@ package de.neominik.caval.reader;
 import de.neominik.caval.lang.IFn;
 import de.neominik.caval.lang.Keyword;
 import de.neominik.caval.lang.Symbol;
+import loader.PluginLoader;
 
 import java.io.IOException;
 import java.io.PushbackReader;
@@ -19,24 +20,12 @@ public class LispReader {
     private static Pattern floatPat = Pattern.compile("([-+]?[0-9]+(\\.[0-9]*)?([eE][-+]?[0-9]+)?)(M)?");
     private static Pattern symbolPat = Pattern.compile("[:]?(/|[\\D&&[^/]][^/]*)");
 
-    static {
-        macros['"'] = new StringReader();
-        macros[';'] = new CommentReader();
-        macros['\''] = new QuoteReader();
-        macros['@'] = null;
-        macros['^'] = null;
-        macros['`'] = null;
-        macros['~'] = null;
-        macros['('] = new CollectionReader.ListReader();
-        macros[')'] = new UnmatchedDelimiterReader();
-        macros['['] = new CollectionReader.VectorReader();
-        macros[']'] = new UnmatchedDelimiterReader();
-        macros['{'] = new CollectionReader.MapReader();
-        macros['}'] = new UnmatchedDelimiterReader();
-        macros['\\'] = null;
-        macros['%'] = null;
-        macros['#'] = null;
-    }
+	static {
+		PluginLoader.load(SpecialReader.class).stream()
+				.flatMap(reader -> reader.getReadersForChars().entrySet().stream()).forEach(entry -> {
+					macros[entry.getKey()] = entry.getValue();
+				});
+	}
 
     static int read1(Reader r) {
         try {
