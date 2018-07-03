@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+    <properties/>
+    <struct>
+        <and abstract="true" mandatory="true" name="caval">
+            <description>
+caval is a Configurable And Value oriented LISP, targeting the JVM.
+</description>
+            <feature mandatory="true" name="Base"/>
+            <or abstract="true" mandatory="true" name="Input">
+                <description>
+Where to get the caval code from
+</description>
+                <feature abstract="true" name="File">
+                    <description>
+Read from a file
+</description>
+                </feature>
+                <feature abstract="true" name="REPL">
+                    <description>
+Start a Read Evaluate Print Loop
+</description>
+                </feature>
+            </or>
+            <and abstract="true" mandatory="true" name="Reader">
+                <description>
+Reads the code and creates datastructures
+</description>
+                <and abstract="true" mandatory="true" name="Collections">
+                    <description>
+Collection datastructures
+</description>
+                    <feature abstract="true" mandatory="true" name="Lists">
+                        <description>
+Linked Lists
+</description>
+                    </feature>
+                    <feature abstract="true" name="Vectors">
+                        <description>
+Like ArrayList
+</description>
+                    </feature>
+                    <feature abstract="true" name="Maps">
+                        <description>
+Associative datastructure like HashMap
+</description>
+                    </feature>
+                </and>
+                <feature abstract="true" mandatory="true" name="Symbols">
+                    <description>
+Symbols refer to other things
+</description>
+                </feature>
+                <feature abstract="true" name="Keywords">
+                    <description>
+Keywords refer to themselves (useful as keys in a map)
+</description>
+                </feature>
+                <feature abstract="true" name="Numbers">
+                    <description>
+Integers and Doubles
+</description>
+                </feature>
+                <feature abstract="true" name="Strings">
+                    <description>
+Well Strings are Strings
+</description>
+                </feature>
+                <feature abstract="true" name="Comments"/>
+                <feature abstract="true" name="SpecialValues">
+                    <description>
+nil, true, false
+</description>
+                </feature>
+                <feature abstract="true" name="QuoteMacro"/>
+            </and>
+            <and abstract="true" mandatory="true" name="Evaluator">
+                <description>
+Evaluates the datastructures from the reader
+</description>
+                <and abstract="true" name="StandardLibrary">
+                    <description>
+Vital functions to do stuff
+</description>
+                    <feature abstract="true" name="Define">
+                        <description>
+Bind a value to a symbol
+</description>
+                    </feature>
+                    <feature abstract="true" name="Let">
+                        <description>
+Create local bindings
+</description>
+                    </feature>
+                    <feature abstract="true" name="Function">
+                        <description>
+Create a function
+</description>
+                    </feature>
+                    <feature abstract="true" name="If">
+                        <description>
+if condition then else
+</description>
+                    </feature>
+                    <or abstract="true" name="Arithmetics">
+                        <description>
++, -, *, /
+</description>
+                        <feature abstract="true" name="Plus"/>
+                        <feature abstract="true" name="Minus"/>
+                        <feature abstract="true" name="Times"/>
+                        <feature abstract="true" name="Divide"/>
+                    </or>
+                    <or name="CollectionOperations">
+                        <feature name="Conjoin">
+                            <description>
+Add an element to a collection
+</description>
+                        </feature>
+                        <feature name="First"/>
+                        <feature name="Rest"/>
+                        <feature name="Count"/>
+                    </or>
+                    <or name="LogicOperations">
+                        <feature name="Equals"/>
+                        <feature name="Not"/>
+                        <feature name="GreaterThan"/>
+                        <feature name="GreaterOrEqual"/>
+                        <feature name="LessThan"/>
+                        <feature name="LessOrEqual"/>
+                    </or>
+                    <and abstract="true" name="IO">
+                        <feature abstract="true" name="Printing"/>
+                        <feature abstract="true" name="Exit"/>
+                    </and>
+                </and>
+                <feature abstract="true" name="Macros">
+                    <description>
+Like a function but gets code (the datastructure)
+as parameters and returns code to be evaluated
+</description>
+                </feature>
+                <feature abstract="true" name="NameSpaces">
+                    <description>
+Introduce scopes so not everything is global
+</description>
+                </feature>
+                <feature abstract="true" name="Quoting">
+                    <description>
+Don't evaluate the quoted expression,
+treat it as a datastructure
+</description>
+                </feature>
+                <feature abstract="true" name="Eval"/>
+            </and>
+        </and>
+    </struct>
+    <constraints>
+        <rule>
+            <imp>
+                <var>Arithmetics</var>
+                <var>Numbers</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>If</var>
+                <var>SpecialValues</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>LogicOperations</var>
+                <var>SpecialValues</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>Eval</var>
+                <var>Quoting</var>
+            </imp>
+        </rule>
+    </constraints>
+    <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+    <comments/>
+    <featureOrder userDefined="false"/>
+</featureModel>
