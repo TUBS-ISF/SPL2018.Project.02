@@ -6,7 +6,7 @@ import java.math.MathContext;
 import java.util.Collection;
 
 public abstract class Arithmetic extends AApplyOnlyFn {
-    static BigDecimal toBigDecimal(Object x) {
+    public static BigDecimal toBigDecimal(Object x) {
         if (x instanceof BigDecimal)
             return (BigDecimal) x;
         else if (x instanceof BigInteger)
